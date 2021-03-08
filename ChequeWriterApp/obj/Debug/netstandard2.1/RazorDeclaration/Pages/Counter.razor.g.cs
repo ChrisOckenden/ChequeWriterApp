@@ -93,7 +93,7 @@ using System.Globalization;
 #nullable restore
 #line 10 "C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\Pages\Counter.razor"
        
-    private double chequeNumber = 9960000.52;
+    private double chequeNumber = 996.52;
     // Holds the pre decimal number part of the cheque number.
     private int chequeNumberIntPart;
     // Holds the post decimal number part of the cheque number.
@@ -118,7 +118,7 @@ using System.Globalization;
                 chequeNumberIntPart = Math.Abs(chequeNumberIntPart);
             }
 
-            ChequeNumberWords += WordReturn(chequeNumberIntPart, "");
+            ChequeNumberWords += WordReturn(chequeNumberIntPart);
 
             // Add dollars suffix and deal with the plural wording.
             if (ChequeNumberWords == "One")
@@ -134,13 +134,13 @@ using System.Globalization;
         if (chequeNumberFracPart != 0 && chequeNumberIntPart != 0)
         {
             ChequeNumberWords += " And ";
-            ChequeNumberWords += WordReturn(chequeNumberFracPart, "");
+            ChequeNumberWords += WordReturn(chequeNumberFracPart);
             ChequeNumberWords += " Cents";
         }
 
         if (chequeNumberFracPart != 0 && chequeNumberIntPart == 0)
         {
-            ChequeNumberWords += WordReturn(chequeNumberFracPart, "");
+            ChequeNumberWords += WordReturn(chequeNumberFracPart);
             ChequeNumberWords += " Cents";
         }
 
@@ -161,125 +161,123 @@ using System.Globalization;
     //    return NumberWords;
     //}
 
-    public string WordReturn(int number, string word) {
+    public string WordReturn(int theNumber) {
 
 
 
-        var numberWords = word;
+        var numberWords = "";
         // the base signficant figure amount.
 
         // the base signficant figure amount.
-        int numberColumn;
+        int groupNumbersize;
         // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
-        double theNumber;
+        double leadingNumberDec;
         // Stores the significant number.
-        int numberInt;
+        int leadingNumberInt;
 
-        ChequeNumberLength = number.ToString().Length;
+        ChequeNumberLength = theNumber.ToString().Length;
 
-        switch (ChequeNumberLength)
-        {
+        while (RemainingNumber > 0)
 
-            case 1: //ones' range    
+            switch (ChequeNumberLength)
+            {
 
-                numberWords = Ones(number);
-                RemainingNumber = 0;
-                return numberWords;
+                case 1: //ones' range    
 
-            case 2: //tens' range    
-                numberWords = Tens(number);
-                RemainingNumber = 0;
-                return numberWords;
+                    numberWords += Ones(theNumber);
+                    RemainingNumber = 0;
+                    return numberWords;
 
-            case 3: //hundreds' range                               
-                // the base signficant figure amount.
-                numberColumn = 100;
-                // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
-                theNumber = (double)number / (double)numberColumn;
-                // Stores the significant number.
-                numberInt = (int)Math.Floor(theNumber);
-                // convert the significant number to words.
-                numberWords = WordReturn(numberInt, numberWords) + " " + "Hundred ";
-                // Take away the numbers that have been converted to words and store the remaining number.
-                RemainingNumber = number - (numberInt * numberColumn);
-                while (RemainingNumber > 0)
-                {
-                    numberWords = WordReturn(RemainingNumber, numberWords);
-                }
-                return numberWords;
+                case 2: //tens' range    
+                    numberWords += Tens(theNumber);
+                    RemainingNumber = 0;
+                    return numberWords;
+
+                case 3: //hundreds' range                               
+                        // the base signficant figure amount.
+                    groupNumbersize = 100;
+                    // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
+                    leadingNumberDec = (double)theNumber / (double)groupNumbersize;
+                    // Stores the significant number.
+                    leadingNumberInt = (int)Math.Floor(leadingNumberDec);
+                    // convert the significant number to words.
+                    numberWords += WordReturn(leadingNumberInt) + " " + "Hundred ";
+                    // Take away the numbers that have been converted to words and store the remaining number.
+                    RemainingNumber = theNumber - (leadingNumberInt * groupNumbersize);
+                    return numberWords;
 
 
-            case 4: //thousands' range (1000)
-                    // the base signficant figure amount.
-                numberColumn = 1000;
-                // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
-                theNumber = (double)number / (double)numberColumn;
-                // Stores the significant number.
-                numberInt = (int)Math.Floor(theNumber);
-                // convert the significant number to words.
-                numberWords = WordReturn(numberInt, numberWords) + " " + "Thousand ";
-                // Take away the numbers that have been converted to words and store the remaining number.
-                RemainingNumber = number - (numberInt * numberColumn);
-                while (RemainingNumber > 0)
-                {
-                    numberWords = WordReturn(RemainingNumber, numberWords);
-                }
-                return numberWords;
+                //case 4: //thousands' range (1000)
+                //        // the base signficant figure amount.
+                //    numberColumn = 1000;
+                //    // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
+                //    theNumber = (double)number / (double)numberColumn;
+                //    // Stores the significant number.
+                //    numberInt = (int)Math.Floor(theNumber);
+                //    // convert the significant number to words.
+                //    numberWords = WordReturn(numberInt) + " " + "Thousand ";
+                //    // Take away the numbers that have been converted to words and store the remaining number.
+                //    RemainingNumber = number - (numberInt * numberColumn);
+                //    while (RemainingNumber > 0)
+                //    {
+                //        numberWords = WordReturn(RemainingNumber);
+                //    }
+                //    return numberWords;
 
-            case 5: //thousands' range (10000)
-                    // the base signficant figure amount.
-                numberColumn = 1000;
-                // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
-                theNumber = (double)number / (double)numberColumn;
-                // Stores the significant number.
-                numberInt = (int)Math.Floor(theNumber);
-                // convert the significant number to words.
-                numberWords = WordReturn(numberInt, numberWords) + " " + "Thousand ";
-                // Take away the numbers that have been converted to words and store the remaining number.
-                RemainingNumber = number - (numberInt * numberColumn);
-                while (RemainingNumber > 0)
-                {
-                    numberWords = WordReturn(RemainingNumber, numberWords);
-                }
-                return numberWords;
+                //case 5: //thousands' range (10000)
+                //        // the base signficant figure amount.
+                //    numberColumn = 1000;
+                //    // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
+                //    theNumber = (double)number / (double)numberColumn;
+                //    // Stores the significant number.
+                //    numberInt = (int)Math.Floor(theNumber);
+                //    // convert the significant number to words.
+                //    numberWords = WordReturn(numberInt) + " " + "Thousand ";
+                //    // Take away the numbers that have been converted to words and store the remaining number.
+                //    RemainingNumber = number - (numberInt * numberColumn);
+                //    while (RemainingNumber > 0)
+                //    {
+                //        numberWords = WordReturn(RemainingNumber);
+                //    }
+                //    return numberWords;
 
-            case 6: //thousands' range (100000)
-                    // the base signficant figure amount.
-                numberColumn = 1000;
-                // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
-                theNumber = (double)number / (double)numberColumn;
-                // Stores the significant number.
-                numberInt = (int)Math.Floor(theNumber);
-                // convert the significant number to words.
-                numberWords = WordReturn(numberInt, numberWords) + " " + "Thousand ";
-                // Take away the numbers that have been converted to words and store the remaining number.
-                RemainingNumber = number - (numberInt * numberColumn);
-                while (RemainingNumber > 0)
-                {
-                    numberWords = WordReturn(RemainingNumber, numberWords);
-                }
-                return numberWords;
+                //case 6: //thousands' range (100000)
+                //        // the base signficant figure amount.
+                //    numberColumn = 1000;
+                //    // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
+                //    theNumber = (double)number / (double)numberColumn;
+                //    // Stores the significant number.
+                //    numberInt = (int)Math.Floor(theNumber);
+                //    // convert the significant number to words.
+                //    numberWords = WordReturn(numberInt) + " " + "Thousand ";
+                //    // Take away the numbers that have been converted to words and store the remaining number.
+                //    RemainingNumber = number - (numberInt * numberColumn);
+                //    while (RemainingNumber > 0)
+                //    {
+                //        numberWords = WordReturn(RemainingNumber);
+                //    }
+                //    return numberWords;
 
-            case 7: //millions' range (1000000)
-                    // the base signficant figure amount.
-                numberColumn = 1000000;
-                // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
-                theNumber = (double)number / (double)numberColumn;
-                // Stores the significant number.
-                numberInt = (int)Math.Floor(theNumber);
-                // convert the significant number to words.
-                numberWords = WordReturn(numberInt, numberWords) + " " + "Million ";
-                // Take away the numbers that have been converted to words and store the remaining number.
-                RemainingNumber = number - (numberInt * numberColumn);
-                while (RemainingNumber > 0)
-                {
-                    numberWords = WordReturn(RemainingNumber, numberWords);
-                }
-                return numberWords;
+                //case 7: //millions' range (1000000)
+                //        // the base signficant figure amount.
+                //    numberColumn = 1000000;
+                //    // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
+                //    theNumber = (double)number / (double)numberColumn;
+                //    // Stores the significant number.
+                //    numberInt = (int)Math.Floor(theNumber);
+                //    // convert the significant number to words.
+                //    numberWords = WordReturn(numberInt) + " " + "Million ";
+                //    // Take away the numbers that have been converted to words and store the remaining number.
+                //    RemainingNumber = number - (numberInt * numberColumn);
+                //    while (RemainingNumber > 0)
+                //    {
+                //        numberWords = WordReturn(RemainingNumber);
+                //    }
+                //    return numberWords;
 
-            default:
-                return numberWords;
-        }
+                default:
+                    return numberWords;
+            }
     }
 
     /// <summary>
