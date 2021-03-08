@@ -90,7 +90,7 @@ using System.Globalization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\Shared\NavMenu.razor"
+#line 18 "C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

@@ -91,37 +91,45 @@ using System.Globalization;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 10 "C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\Pages\Counter.razor"
+#line 17 "C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\Pages\Counter.razor"
        
-    private double chequeNumber = 996.52;
+    public double ChequeNumber { get; set; } = 00.00;
     // Holds the pre decimal number part of the cheque number.
-    private int chequeNumberIntPart;
+    private int ChequeNumberIntPart { get; set; }
     // Holds the post decimal number part of the cheque number.
-    private int chequeNumberFracPart;
+    private int ChequeNumberFracPart { get; set; }
     private int ChequeNumberLength { get; set; }
-    private string ChequeNumberWords;
+    private string ChequeNumberWords { get; set; }
+    private string ChequeNumberWords2 { get; set; }
     private int RemainingNumber { get; set; }
+
+
 
     public void ChequeNumberToWords()
     {
-        // Set chequeNumberIntPart and chequeNumberFracPart by splitting the cheque number variable at the decimal point.
-        string s = chequeNumber.ToString("0.00", CultureInfo.InvariantCulture);
-        string[] parts = s.Split('.');
-        chequeNumberIntPart = int.Parse(parts[0]);
-        chequeNumberFracPart = int.Parse(parts[1]);
+        // Initialise variables for button press.
+        ChequeNumberWords = "";
+        ChequeNumberWords2 = "";
 
-        if (chequeNumberIntPart != 0)
+
+        // Set chequeNumberIntPart and chequeNumberFracPart by splitting the cheque number variable at the decimal point.
+        string s = ChequeNumber.ToString("0.00", CultureInfo.InvariantCulture);
+        string[] parts = s.Split('.');
+        ChequeNumberIntPart = int.Parse(parts[0]);
+        ChequeNumberFracPart = int.Parse(parts[1]);
+
+        if (ChequeNumberIntPart != 0)
         {
-            if (chequeNumberIntPart < 0)
+            if (ChequeNumberIntPart < 0)
             {
                 ChequeNumberWords += " Negative";
-                chequeNumberIntPart = Math.Abs(chequeNumberIntPart);
+                ChequeNumberIntPart = Math.Abs(ChequeNumberIntPart);
             }
 
-            ChequeNumberWords += WordReturn(chequeNumberIntPart);
+            ChequeNumberWords += WordReturn(ChequeNumberIntPart);
 
             // Add dollars suffix and deal with the plural wording.
-            if (ChequeNumberWords == "One")
+            if (ChequeNumberIntPart == 1)
             {
                 ChequeNumberWords += " Dollar";
             }
@@ -131,17 +139,38 @@ using System.Globalization;
             }
         }
 
-        if (chequeNumberFracPart != 0 && chequeNumberIntPart != 0)
+        if (ChequeNumberFracPart != 0 && ChequeNumberIntPart != 0)
         {
+            // Reset the words
+            ChequeNumberWords2 = "";
+
             ChequeNumberWords += " And ";
-            ChequeNumberWords += WordReturn(chequeNumberFracPart);
-            ChequeNumberWords += " Cents";
+            ChequeNumberWords += WordReturn(ChequeNumberFracPart);
+
+            // Add dollars suffix and deal with the plural wording.
+            if (ChequeNumberFracPart == 1)
+            {
+                ChequeNumberWords += " Cent";
+            }
+            else
+            {
+                ChequeNumberWords += " Cents";
+            }
         }
 
-        if (chequeNumberFracPart != 0 && chequeNumberIntPart == 0)
+        if (ChequeNumberFracPart != 0 && ChequeNumberIntPart == 0)
         {
-            ChequeNumberWords += WordReturn(chequeNumberFracPart);
-            ChequeNumberWords += " Cents";
+            ChequeNumberWords += WordReturn(ChequeNumberFracPart);
+
+            // Add dollars suffix and deal with the plural wording.
+            if (ChequeNumberFracPart == 1)
+            {
+                ChequeNumberWords += " Cent";
+            }
+            else
+            {
+                ChequeNumberWords += " Cents";
+            }
         }
 
     }
@@ -161,123 +190,130 @@ using System.Globalization;
     //    return NumberWords;
     //}
 
-    public string WordReturn(int theNumber) {
+    public string WordReturn(int theNumber)
+    {
 
+        int numberToConvert = theNumber;
 
+        //ones' range
+        if (numberToConvert < 10)
+        {
+            ChequeNumberWords2 += Ones(theNumber);
+            RemainingNumber = 0;
+        }
 
-        var numberWords = "";
+        //tens' range
+        else if (10 <= numberToConvert && numberToConvert < 100)
+        {
+            ChequeNumberWords2 += Tens(theNumber);
+            RemainingNumber = 0;
+        }
+
+        //hundreds' range
+        else if (100 <= numberToConvert && numberToConvert < 1000)
+        {
+            ChequeNumberWords2 += Hundreds(theNumber);
+            RemainingNumber = 0;
+        }
+
+        //thousands' range
+        else if (1000 <= numberToConvert && numberToConvert < 1000000)
+        {
+            ChequeNumberWords2 += Thousands(theNumber);
+        }
+
+        else //
+        {
+            ChequeNumberWords2 = "Sorry this app is too budget to deal with this request";
+        }
+        return ChequeNumberWords2;
+    }
+
+    public string NumbersCase(int leadingNumberInt)
+
+    {
+        string word = "";
+        int lengthOfNumber = leadingNumberInt.ToString().Length;
+
+        switch (lengthOfNumber)
+        {
+            case 1:
+                word = Ones(leadingNumberInt);
+                return word;
+            case 2:
+                word = Tens(leadingNumberInt);
+                return word;
+            case 3:
+                word = Hundreds(leadingNumberInt);
+                return word;
+
+            default:
+                return word;
+        }
+
+    }
+
+    /// <summary>
+    /// Converts the cheque number to words.
+    /// Used for example when the user inputs a number, the output is written in words.
+    /// </summary>
+    private string Hundreds(int number)
+    {
+        int RemainingNum = number;
+        int theNumber = number;
         // the base signficant figure amount.
-
-        // the base signficant figure amount.
-        int groupNumbersize;
-        // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
+        int groupNumbersize = 100;
         double leadingNumberDec;
+        string numberWords = "";
+
+
+        // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
+
+        leadingNumberDec = (double)theNumber / (double)groupNumbersize;
         // Stores the significant number.
-        int leadingNumberInt;
+        int leadingNumberInt = (int)Math.Floor(leadingNumberDec);
 
-        ChequeNumberLength = theNumber.ToString().Length;
+        RemainingNum = theNumber - (leadingNumberInt * groupNumbersize);
 
-        while (RemainingNumber > 0)
+        string andSuffix1;
 
-            switch (ChequeNumberLength)
-            {
+        if (RemainingNum != 0)
+        {
+            andSuffix1 = "And";
+        }
+        else
+        {
+            andSuffix1 = "";
+        }
 
-                case 1: //ones' range    
+        // convert the significant number to words.
+        numberWords = Ones(leadingNumberInt) + " Hundred " + andSuffix1 + " " + Tens(RemainingNum);
 
-                    numberWords += Ones(theNumber);
-                    RemainingNumber = 0;
-                    return numberWords;
+        return numberWords;
+    }
 
-                case 2: //tens' range    
-                    numberWords += Tens(theNumber);
-                    RemainingNumber = 0;
-                    return numberWords;
-
-                case 3: //hundreds' range                               
-                        // the base signficant figure amount.
-                    groupNumbersize = 100;
-                    // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
-                    leadingNumberDec = (double)theNumber / (double)groupNumbersize;
-                    // Stores the significant number.
-                    leadingNumberInt = (int)Math.Floor(leadingNumberDec);
-                    // convert the significant number to words.
-                    numberWords += WordReturn(leadingNumberInt) + " " + "Hundred ";
-                    // Take away the numbers that have been converted to words and store the remaining number.
-                    RemainingNumber = theNumber - (leadingNumberInt * groupNumbersize);
-                    return numberWords;
+    private string Thousands(int number)
+    {
+        int RemainingNum = number;
+        int theNumber = number;
+        // the base signficant figure amount.
+        int groupNumbersize = 1000;
+        double leadingNumberDec;
+        string numberWords = "";
 
 
-                //case 4: //thousands' range (1000)
-                //        // the base signficant figure amount.
-                //    numberColumn = 1000;
-                //    // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
-                //    theNumber = (double)number / (double)numberColumn;
-                //    // Stores the significant number.
-                //    numberInt = (int)Math.Floor(theNumber);
-                //    // convert the significant number to words.
-                //    numberWords = WordReturn(numberInt) + " " + "Thousand ";
-                //    // Take away the numbers that have been converted to words and store the remaining number.
-                //    RemainingNumber = number - (numberInt * numberColumn);
-                //    while (RemainingNumber > 0)
-                //    {
-                //        numberWords = WordReturn(RemainingNumber);
-                //    }
-                //    return numberWords;
+        // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
 
-                //case 5: //thousands' range (10000)
-                //        // the base signficant figure amount.
-                //    numberColumn = 1000;
-                //    // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
-                //    theNumber = (double)number / (double)numberColumn;
-                //    // Stores the significant number.
-                //    numberInt = (int)Math.Floor(theNumber);
-                //    // convert the significant number to words.
-                //    numberWords = WordReturn(numberInt) + " " + "Thousand ";
-                //    // Take away the numbers that have been converted to words and store the remaining number.
-                //    RemainingNumber = number - (numberInt * numberColumn);
-                //    while (RemainingNumber > 0)
-                //    {
-                //        numberWords = WordReturn(RemainingNumber);
-                //    }
-                //    return numberWords;
+        leadingNumberDec = (double)theNumber / (double)groupNumbersize;
+        // Stores the significant number.
+        int leadingNumberInt = (int)Math.Floor(leadingNumberDec);
 
-                //case 6: //thousands' range (100000)
-                //        // the base signficant figure amount.
-                //    numberColumn = 1000;
-                //    // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
-                //    theNumber = (double)number / (double)numberColumn;
-                //    // Stores the significant number.
-                //    numberInt = (int)Math.Floor(theNumber);
-                //    // convert the significant number to words.
-                //    numberWords = WordReturn(numberInt) + " " + "Thousand ";
-                //    // Take away the numbers that have been converted to words and store the remaining number.
-                //    RemainingNumber = number - (numberInt * numberColumn);
-                //    while (RemainingNumber > 0)
-                //    {
-                //        numberWords = WordReturn(RemainingNumber);
-                //    }
-                //    return numberWords;
+        RemainingNum = theNumber - (leadingNumberInt * groupNumbersize);
 
-                //case 7: //millions' range (1000000)
-                //        // the base signficant figure amount.
-                //    numberColumn = 1000000;
-                //    // Intermediate number that stores the signficant number on the left of the decimal, and the remaining on the right of decimal side.
-                //    theNumber = (double)number / (double)numberColumn;
-                //    // Stores the significant number.
-                //    numberInt = (int)Math.Floor(theNumber);
-                //    // convert the significant number to words.
-                //    numberWords = WordReturn(numberInt) + " " + "Million ";
-                //    // Take away the numbers that have been converted to words and store the remaining number.
-                //    RemainingNumber = number - (numberInt * numberColumn);
-                //    while (RemainingNumber > 0)
-                //    {
-                //        numberWords = WordReturn(RemainingNumber);
-                //    }
-                //    return numberWords;
+        // convert the significant number to words.
+        numberWords = NumbersCase(leadingNumberInt) + " Thousand " + NumbersCase(RemainingNum);
 
-                default:
-                    return numberWords;
-            }
+        return numberWords;
     }
 
     /// <summary>
@@ -286,13 +322,13 @@ using System.Globalization;
     /// </summary>
     private string Tens(int number)
     {
-
-        RemainingNumber = number;
+        if (number == 0 || number.ToString().Length != 2) return "";
+        int RemainingNum = number;
         string numberWords = "";
 
 
         Dictionary<int, string> tensDictionary = new Dictionary<int, string>()
-        {
+    {
             {10, "Ten" },
             {11, "Eleven" },
             {12, "Twelve" },
@@ -313,7 +349,7 @@ using System.Globalization;
             {90, "Ninety" },
         };
 
-        if (RemainingNumber > 19)
+        if (RemainingNum > 19)
         {
 
             // the base signficant figure amount.
@@ -340,12 +376,12 @@ using System.Globalization;
 
     private string Ones(int number)
     {
-        if (number.ToString().Length != 1) return "";
+        if (number == 0 || number.ToString().Length != 1) return "";
 
         string numberWord = "";
 
         Dictionary<int, string> onesDictionary = new Dictionary<int, string>()
-        {
+    {
             {1, "One" },
             {2, "Two" },
             {3, "Three" },
@@ -358,7 +394,6 @@ using System.Globalization;
         };
 
         numberWord = onesDictionary[number];
-
         return numberWord;
 
     }
