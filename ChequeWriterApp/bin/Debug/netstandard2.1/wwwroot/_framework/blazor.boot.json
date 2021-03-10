@@ -6,7 +6,7 @@
   "linkerEnabled": false,
   "resources": {
     "assembly": {
-      "ChequeWriterApp.dll": "sha256-K6Vvngmxd+mS3+T3GoUjfwipEJbIQyYDcH\/bOfHbuAM=",
+      "ChequeWriterApp.dll": "sha256-5JXV+UxVgTOp\/tKVOLMyHb2OmG3MW0PY0Nyu+QC8CN4=",
       "System.Net.Http.Json.dll": "sha256-99dseBOagY3mzu5Y8Eqm8gRI+o8QbbCp7R2Ew9bQ+5E=",
       "System.Buffers.dll": "sha256-ZxXy75PYbzJxNfAc\/SAP1nUYm4gt1jSaOpFnBb9m85M=",
       "mscorlib.dll": "sha256-BaZPMj95+YNe3G4ckTGD6szZFwZeA2MOHn91zTGKDeU=",
@@ -60,7 +60,7 @@
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-czNf3btAeBW\/vvID5LAfgcsNZ+GM3ssVuPaMflcg0rs="
     },
     "pdb": {
-      "ChequeWriterApp.pdb": "sha256-XZu3tKGkRtE3QXCdnNyAFoweNQK+QKAI9ybHfks\/nhc="
+      "ChequeWriterApp.pdb": "sha256-NJFVVyHV12kBMIp6esLW2XVFN72evkN3K\/GdHoRYYJ0="
     },
     "runtime": {
       "dotnet.3.2.0.js": "sha256-mPoqx7XczFHBWk3gRNn0hc9ekG1OvkKY4XiKRY5Mj5U=",

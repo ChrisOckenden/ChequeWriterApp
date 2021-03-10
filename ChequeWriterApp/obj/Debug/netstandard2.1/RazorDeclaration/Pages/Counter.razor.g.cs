@@ -103,8 +103,6 @@ using System.Globalization;
     private string ChequeNumberWords2 { get; set; }
     private int RemainingNumber { get; set; }
 
-
-
     public void ChequeNumberToWords()
     {
         // Initialise variables for button press.
@@ -174,21 +172,6 @@ using System.Globalization;
         }
 
     }
-
-    //private string NumberToWordsconvert(int number)
-    //{
-    //    var NumberWords = "";
-    //    RemainingNumber = number;
-    //    ChequeNumberLength = RemainingNumber.ToString().Length;
-
-    //    while (ChequeNumberLength > 0 && RemainingNumber > 0)
-    //    {
-    //        NumberWords += WordReturn(RemainingNumber);
-    //        ChequeNumberLength = RemainingNumber.ToString().Length;
-    //    };
-
-    //    return NumberWords;
-    //}
 
     public string WordReturn(int theNumber)
     {
