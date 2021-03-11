@@ -14,11 +14,8 @@ namespace ChequeWriterApp.Pages
         // Maximum amount that can be input for the Cheque Number
         private double MaxChequeNumber { get; set; } = 1000000;
 
-
-
         // The Number to convert, this is what the user would alter.
         public double ChequeNumber { get; set; }
-
 
         // Holds the pre decimal number part of the cheque number.
         private int ChequeNumberIntPart { get; set; }
