@@ -514,7 +514,6 @@ C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\De
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\ChequeWriterApp.csproj.CoreCompileInputs.cache
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\ChequeWriterApp.RazorComponent.input.cache
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\RazorDeclaration\App.razor.g.cs
-C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Counter.razor.g.cs
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\RazorDeclaration\Pages\FetchData.razor.g.cs
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Index.razor.g.cs
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\RazorDeclaration\Shared\MainLayout.razor.g.cs
@@ -527,7 +526,6 @@ C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\De
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\ChequeWriterApp.TagHelpers.output.cache
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\ChequeWriterApp.RazorCoreGenerate.cache
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\Razor\App.razor.g.cs
-C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\Razor\Pages\Counter.razor.g.cs
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\Razor\Pages\FetchData.razor.g.cs
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\Razor\Pages\Index.razor.g.cs
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\Razor\Shared\MainLayout.razor.g.cs
@@ -714,7 +712,9 @@ C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\De
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\ChequeWriterApp.csproj.CopyComplete
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\ChequeWriterApp.dll
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\ChequeWriterApp.pdb
+C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\RazorDeclaration\Pages\ChequeWriter.razor.g.cs
+C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\Razor\Pages\ChequeWriter.razor.g.cs
 C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\ChequeWriterApp.csprojAssemblyReference.cache
-C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\integrity\5JXV_UxVgTOp-tKVOLMyHb2OmG3MW0PY0Nyu_QC8CN4=.hash
-C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\integrity\NJFVVyHV12kBMIp6esLW2XVFN72evkN3K-GdHoRYYJ0=.hash
-C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\integrity\GczF7UJNhqbQipW8A1kZSsKUyo_aYj5uxgFTW4IzjBw=.hash
+C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\integrity\ELIVO1d97Isd6qdcsWqwaWr6C5KQigJY8xyXnp4oyc8=.hash
+C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\integrity\VDODMW_TNCng2KCmN925nfNIK4p1EI4WfbqaobQvhrg=.hash
+C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\obj\Debug\netstandard2.1\integrity\whV5AROlA5URa4Ce4YwZhtK5wUHERCxCjx0Az3Q87bA=.hash

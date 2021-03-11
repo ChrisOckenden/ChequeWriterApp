@@ -1,7 +1,7 @@
 {
   "FilesToCompress": [
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\5JXV_UxVgTOp-tKVOLMyHb2OmG3MW0PY0Nyu_QC8CN4=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\ELIVO1d97Isd6qdcsWqwaWr6C5KQigJY8xyXnp4oyc8=.hash",
       "Source": "C:\\Users\\ockenden\\ChequeWriterApplication\\ChequeWriterApp\\ChequeWriterApp\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\ChequeWriterApp.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/ChequeWriterApp.dll.br"
     },
@@ -261,7 +261,7 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.JSInterop.WebAssembly.dll.br"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\NJFVVyHV12kBMIp6esLW2XVFN72evkN3K-GdHoRYYJ0=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\VDODMW_TNCng2KCmN925nfNIK4p1EI4WfbqaobQvhrg=.hash",
       "Source": "C:\\Users\\ockenden\\ChequeWriterApplication\\ChequeWriterApp\\ChequeWriterApp\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\ChequeWriterApp.pdb",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/ChequeWriterApp.pdb.br"
     },
@@ -286,7 +286,7 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/blazor.webassembly.js.br"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\GczF7UJNhqbQipW8A1kZSsKUyo_aYj5uxgFTW4IzjBw=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\whV5AROlA5URa4Ce4YwZhtK5wUHERCxCjx0Az3Q87bA=.hash",
       "Source": "C:\\Users\\ockenden\\ChequeWriterApplication\\ChequeWriterApp\\ChequeWriterApp\\obj\\Debug\\netstandard2.1\\blazor\\blazor.boot.json",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/blazor.boot.json.br"
     }
