@@ -98,7 +98,7 @@ using System.ComponentModel.DataAnnotations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 31 "C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\Pages\ChequeWriter.razor"
+#line 30 "C:\Users\ockenden\ChequeWriterApplication\ChequeWriterApp\ChequeWriterApp\Pages\ChequeWriter.razor"
        
     private Inputmodel inputModel = new Inputmodel();
 
@@ -112,10 +112,9 @@ using System.ComponentModel.DataAnnotations;
     public class Inputmodel
     {
 
-        //[Required]
-        //[Range(0.01, 999999.99, ErrorMessage = "Input number is invalid, the allowable range is between .01 and 999999.99")]
+        [Required]
+        [Range(0.01, 999999.99, ErrorMessage = "Input number is invalid, the allowable range is between .01 and 999999.99")]
         public double Number { get; set; }
-
 
     }
 

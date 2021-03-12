@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "F7B+NPcCLAcmL+5WScBv+mAtHw9za9BeUNhY9+1DgfGJu9fmzlSSOoZNNxnlyf3ZLaVC0PNKUl9svLXcY3UAsA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ockenden\\ChequeWriterApplication\\ChequeWriterApp\\ChequeWriterApp.Shared\\ChequeWriterApp.Shared.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ockenden\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\ockenden\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
